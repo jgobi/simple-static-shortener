@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Encurtador de links</title>
+  <link rel="stylesheet" href="/water.css" />
+  <style>
+    td:empty::after {
+      content: "-";
+    }
+
+    td,
+    th[scope="row"] {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main -->
+  <main>
+    <h1>Encurtador de links</h1>
+
+    {{#short_url}}
+    <pre>
+      <code>
+        <b>URL curta criada:</b> <a href="{{short_url}}">{{short_url}}</a>
+        <b>Redireciona para:</b> {{long_url}}
+      </code>
+    </pre>
+    {{/short_url}}
+
+    {{#error}}
+    <pre>
+      <code>
+        <b>ERRO:</b> {{error}}
+      </code>
+    </pre>
+    {{/error}}
+
+    <section>
+      <form method="post" action="/new">
+        <label for="url">URL *</label>
+        <input type="text" name="url" id="url" required autocomplete="off" style="width: 100%;" />
+
+        <label for="slug">Slug</label>
+        <input type="text" name="slug" id="slug" autocomplete="off" placeholder="Deixe em branco para automático" style="width: 100%;">
+        <button type="submit">Criar</button>
+      </form>
+    </section>
+    <hr />
+    <section id="tables">
+      <h2>Lista de URLs</h2>
+      <table role="grid" style="table-layout: auto">
+        <thead>
+          <tr>
+            <th scope="col">Slug</th>
+            <th scope="col">URL longa</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#urls}}
+          <tr>
+            <th scope="row"><a href="{{short}}">{{slug}}</a></th>
+            <td>{{long}}</td>
+            <td>
+              <form method="post" action="/del">
+                <input type="hidden" name="slug" value="{{slug}}" />
+                <button type="submit">Apagar</button>
+              </form>
+            </td>
+          </tr>
+          {{/urls}}
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <!-- ./ Main -->
+</body>
+
+</html>
