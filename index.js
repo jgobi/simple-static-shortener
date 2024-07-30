@@ -153,7 +153,7 @@ app.post("/del", authMiddleware, async (req, res) => {
 
 app.listen(process.env.DASHBOARD_PORT || 3018, () => {
   console.log(
-    "Dashboard iniciado na porta " + (process.env.DASHBOARD_PORT || 3018) + "."
+    "Dashboard listening on port " + (process.env.DASHBOARD_PORT || 3018) + "."
   );
 });
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Encurtador de links</title>
+  <title>URL shortener</title>
   <link rel="stylesheet" href="/water.css" />
   <style>
     td:empty::after {
@@ -21,13 +21,13 @@
 <body>
   <!-- Main -->
   <main>
-    <h1>Encurtador de links</h1>
+    <h1>URL shortener</h1>
 
     {{#short_url}}
     <pre>
       <code>
-        <b>URL curta criada:</b> <a href="{{short_url}}">{{short_url}}</a>
-        <b>Redireciona para:</b> {{long_url}}
+        <b>New short URL:</b> <a href="{{short_url}}">{{short_url}}</a>
+        <b>Redirects to: </b> {{long_url}}
       </code>
     </pre>
     {{/short_url}}
@@ -35,7 +35,7 @@
     {{#error}}
     <pre>
       <code>
-        <b>ERRO:</b> {{error}}
+        <b>ERROR:</b> {{error}}
       </code>
     </pre>
     {{/error}}
@@ -46,18 +46,18 @@
         <input type="text" name="url" id="url" required autocomplete="off" style="width: 100%;" />
 
         <label for="slug">Slug</label>
-        <input type="text" name="slug" id="slug" autocomplete="off" placeholder="Deixe em branco para automático" style="width: 100%;">
-        <button type="submit">Criar</button>
+        <input type="text" name="slug" id="slug" autocomplete="off" placeholder="Leave empty to generate a random one" style="width: 100%;">
+        <button type="submit">Create</button>
       </form>
     </section>
     <hr />
     <section id="tables">
-      <h2>Lista de URLs</h2>
+      <h2>URL list</h2>
       <table role="grid" style="table-layout: auto">
         <thead>
           <tr>
             <th scope="col">Slug</th>
-            <th scope="col">URL longa</th>
+            <th scope="col">Long URL</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -69,7 +69,7 @@
             <td>
               <form method="post" action="/del">
                 <input type="hidden" name="slug" value="{{slug}}" />
-                <button type="submit">Apagar</button>
+                <button type="submit">Delete</button>
               </form>
             </td>
           </tr>
