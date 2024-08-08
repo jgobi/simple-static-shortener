@@ -1,0 +1,6 @@
+node_modules
+Dockerfile
+redirection
+.gitignore
+.git
+env.example

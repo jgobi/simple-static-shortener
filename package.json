@@ -1,6 +1,6 @@
 {
   "name": "redir",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A simple service to provide basic URL shortening capabilities for server with just static file support.",
   "main": "index.js",
   "scripts": {
